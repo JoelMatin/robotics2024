@@ -9,7 +9,8 @@ l5 = 0.1607;
 l6 = 0.1468;
 l7 = 0.2449;
 
-% Define end effector position and orientation
+% Define end effector position and orientation expressed with respect to
+% the world coordinate system
 x0 = 0;
 y0 = 0;
 z0 = 0.5;
@@ -98,16 +99,16 @@ function T = dh_transform(theta, d, a, alpha)
          0, 0, 0, 1];
 end
 
-function R = eul2rotm(eul, sequence)
-    % Convert Euler angles to a rotation matrix
-    Rz1 = [cos(eul(1)), -sin(eul(1)), 0;
-           sin(eul(1)), cos(eul(1)), 0;
-           0, 0, 1];
-    Ry = [cos(eul(2)), 0, sin(eul(2));
-          0, 1, 0;
-          -sin(eul(2)), 0, cos(eul(2))];
-    Rz2 = [cos(eul(3)), -sin(eul(3)), 0;
-           sin(eul(3)), cos(eul(3)), 0;
-           0, 0, 1];
-    R = Rz1 * Ry * Rz2;
-end
+% function R = eul2rotm(eul, sequence)
+%     % Convert Euler angles to a rotation matrix
+%     Rz1 = [cos(eul(1)), -sin(eul(1)), 0;
+%            sin(eul(1)), cos(eul(1)), 0;
+%            0, 0, 1];
+%     Ry = [cos(eul(2)), 0, sin(eul(2));
+%           0, 1, 0;
+%           -sin(eul(2)), 0, cos(eul(2))];
+%     Rz2 = [cos(eul(3)), -sin(eul(3)), 0;
+%            sin(eul(3)), cos(eul(3)), 0;
+%            0, 0, 1];
+%     R = Rz1 * Ry * Rz2;
+% end
